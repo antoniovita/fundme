@@ -1,53 +1,53 @@
 # FundMe
 
-Projeto Hardhat com um contrato simples de crowdfunding (`FundMe`) e uma biblioteca de conversao de preco (`PriceConverter`) usando um feed da Chainlink.
+Hardhat project with a simple crowdfunding contract (`FundMe`) and a price conversion library (`PriceConverter`) that uses a Chainlink price feed.
 
-## Contratos
+## Contracts
 
-- `FundMe.sol`: recebe ETH via `fund()` e permite saque apenas ao `owner` via `withdraw()`. O valor minimo e `5e18` (US$ 5 com 18 casas). `receive` e `fallback` redirecionam para `fund()`.
-- `PriceConverter.sol`: consulta o feed ETH/USD da Chainlink (Sepolia: `0x694AA1769357215DE4FAC081bf1f309aDC325306`) e converte ETH para USD com 18 casas.
+- `FundMe.sol`: receives ETH via `fund()` and allows withdrawals only by the `owner` via `withdraw()`. The minimum is `5e18` (US$ 5 with 18 decimals). `receive` and `fallback` forward to `fund()`.
+- `PriceConverter.sol`: reads the Chainlink ETH/USD feed (Sepolia: `0x694AA1769357215DE4FAC081bf1f309aDC325306`) and converts ETH to USD with 18 decimals.
 
-## Estrutura
+## Structure
 
-- `contracts/`: contratos Solidity.
-- `hardhat.config.ts`: Hardhat 3 com perfis de compilacao e redes (Hardhat local, OP simulado, Sepolia).
-- `test/Counter.ts`: teste de exemplo do template (referencia um contrato `Counter` que nao existe neste repo).
+- `contracts/`: Solidity contracts.
+- `hardhat.config.ts`: Hardhat 3 with compilation profiles and networks (local Hardhat, simulated OP, Sepolia).
+- `test/Counter.ts`: template example test (references a `Counter` contract that does not exist in this repo).
 
-## Requisitos
+## Requirements
 
-- Node.js e npm.
-- Hardhat 3 (ja incluido nas dependencias).
+- Node.js and npm.
+- Hardhat 3 (already included in dependencies).
 
-## Instalação
+## Installation
 
 ```shell
 npm install
 ```
 
-## Compilacao
+## Compilation
 
 ```shell
 npx hardhat compile
 ```
 
-## Testes
+## Tests
 
 ```shell
 npx hardhat test
 ```
 
-## Deploy e rede Sepolia
+## Deploy and Sepolia network
 
-Nao ha modulos do Ignition neste repo (pasta `ignition/modules` esta vazia). Para usar a rede Sepolia, configure as variaveis no `hardhat.config.ts`:
+There are no Ignition modules in this repo (`ignition/modules` is empty). To use Sepolia, configure these variables in `hardhat.config.ts`:
 
 - `SEPOLIA_RPC_URL`
 - `SEPOLIA_PRIVATE_KEY`
 
-Exemplo de comando para setar variaveis (via ambiente):
+Example of setting environment variables:
 
 ```shell
-export SEPOLIA_RPC_URL="https://sepolia.infura.io/v3/SEU_ID"
-export SEPOLIA_PRIVATE_KEY="SUA_CHAVE"
+export SEPOLIA_RPC_URL="https://sepolia.infura.io/v3/YOUR_ID"
+export SEPOLIA_PRIVATE_KEY="YOUR_KEY"
 ```
 
-Depois, adicione um script ou modulo de deploy conforme a sua necessidade.
+Then, add a deploy script or module as needed.
